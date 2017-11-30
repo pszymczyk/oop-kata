@@ -47,4 +47,8 @@ public class Money {
     public String toString() {
         return value.toString();
     }
+
+    public boolean lessOrEqualTo(Money money) {
+        return money.value.compareTo(value) <= 0;
+    }
 }
