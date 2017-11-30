@@ -6,21 +6,26 @@ import com.pszymczyk.polymorphism.RideSummary;
 /**
  * @author pawel szymczyk
  */
-class HighTrafficTaxiTariffElement implements TaxiTariffElement{
+public class HighTrafficTaxiTariffElement implements TaxiTariffElement {
 
-    private final long waitingClients;
-    private final long availableCars;
+    private final long waitingClientsLimit;
+    private final long availableCarsLimit;
+    private final CurrentTrafficRepository currentTrafficRepository;
 
-    public HighTrafficTaxiTariffElement(long waitingClients, long availableCars) {
-        this.waitingClients = waitingClients;
-        this.availableCars = availableCars;
+    public HighTrafficTaxiTariffElement(long waitingClientsLimit, long availableCarsLimit,
+                                        CurrentTrafficRepository currentTrafficRepository) {
+        this.waitingClientsLimit = waitingClientsLimit;
+        this.availableCarsLimit = availableCarsLimit;
+        this.currentTrafficRepository = currentTrafficRepository;
     }
 
     @Override
     public Money calculate(RideSummary rideSummary) {
+        if (currentTrafficRepository.availableCars() == availableCarsLimit
+                && currentTrafficRepository.waitingClients() > waitingClientsLimit) {
+            return new Money("10");
+        }
 
-        //do sth
-
-        return new Money("doSth");
+        return Money.zero();
     }
 }

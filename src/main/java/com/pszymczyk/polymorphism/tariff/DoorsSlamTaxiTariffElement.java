@@ -6,11 +6,11 @@ import com.pszymczyk.polymorphism.RideSummary;
 /**
  * @author pawel szymczyk
  */
-class DoorSlamTaxiTariffElement implements TaxiTariffElement{
+public class DoorsSlamTaxiTariffElement implements TaxiTariffElement{
 
     private final Money doorSlamFee;
 
-    DoorSlamTaxiTariffElement(Money doorSlamFee) {
+    public DoorsSlamTaxiTariffElement(Money doorSlamFee) {
         this.doorSlamFee = doorSlamFee;
     }
 

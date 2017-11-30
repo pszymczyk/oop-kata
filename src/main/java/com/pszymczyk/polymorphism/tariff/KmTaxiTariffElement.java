@@ -6,11 +6,11 @@ import com.pszymczyk.polymorphism.RideSummary;
 /**
  * @author pawel szymczyk
  */
-class KmTaxiTariffElement implements TaxiTariffElement{
+public class KmTaxiTariffElement implements TaxiTariffElement{
 
     private final Money feePerMinute;
 
-    KmTaxiTariffElement(Money feePerMinute) {
+    public KmTaxiTariffElement(Money feePerMinute) {
         this.feePerMinute = feePerMinute;
     }
 

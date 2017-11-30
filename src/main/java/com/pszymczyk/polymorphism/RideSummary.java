@@ -4,11 +4,19 @@ package com.pszymczyk.polymorphism;
  * @author pawel szymczyk
  */
 public class RideSummary {
+    private final int timeInMinutes;
+    private final int distanceInKm;
+
+    public RideSummary(int timeInMinutes, int DistanceInKm) {
+        this.timeInMinutes = timeInMinutes;
+        distanceInKm = DistanceInKm;
+    }
+
     public int getTimeInMinutes() {
-        return 0;
+        return timeInMinutes;
     }
 
     public int getDistanceInKm() {
-        return 0;
+        return distanceInKm;
     }
 }

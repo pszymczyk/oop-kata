@@ -16,10 +16,7 @@ class Taximeter {
         this.taxiTariffElements = taxiTariffElements;
     }
 
-
-    //TODO
     public Money calculate(RideSummary rideSummary) {
-        //tu zakodowac
         Money cost = Money.zero();
         for (TaxiTariffElement element: taxiTariffElements) {
             cost = cost.add(element.calculate(rideSummary));
