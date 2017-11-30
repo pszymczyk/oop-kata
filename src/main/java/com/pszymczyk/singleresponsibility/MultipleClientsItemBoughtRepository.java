@@ -1,9 +1,9 @@
 package com.pszymczyk.singleresponsibility;
 
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,11 +16,13 @@ class MultipleClientsItemBoughtRepository implements ItemBoughtRepository {
     @Autowired
     public MultipleClientsItemBoughtRepository(@Qualifier("rest") ItemBoughtRepository rest,
                                                @Qualifier("logstash") ItemBoughtRepository logstash) {
-        this.clients = Lists.newArrayList(rest, logstash);
+        this.clients = Arrays.asList(rest, logstash);
     }
 
     @Override
     public void save(ItemBought itemBought) {
-        clients.forEach(c -> c.save(itemBought));
+        for (ItemBoughtRepository client: clients) {
+            client.save(itemBought);
+        }
     }
 }

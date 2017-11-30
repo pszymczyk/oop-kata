@@ -19,10 +19,12 @@ class SalesUnit {
     }
 
     public Employee findBoss(int employeeId) {
-        return employees.stream()
-                .filter(e -> e.getId() == employeeId)
-                .findFirst()
-                .map(e -> e.getBoss())
-                .orElseThrow(() -> new RuntimeException("Cannot fid empoyee for given id"));
+        for (Employee employee: employees) {
+            if (employee.getId() == employeeId) {
+                return employee.getBoss();
+            }
+        }
+
+        throw new RuntimeException("Cannot fid empoyee for given id");
     }
 }

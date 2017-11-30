@@ -1,11 +1,8 @@
 package com.pszymczyk.encapsulation;
 
 import com.pszymczyk.abstraction.ipod.IPod;
-import com.pszymczyk.abstraction.ipod.Song;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Set;
 
 /**

@@ -7,9 +7,9 @@ import java.util.Random;
 /**
  * @author pawel szymczyk
  */
-interface Wishlist {
+class Wishlist {
 
-    default boolean isOnWishlist(Wear wear) {
+    boolean isOnWishlist(Wear wear) {
         return new Random().nextBoolean();
     }
 }

@@ -5,8 +5,8 @@ import com.pszymczyk.inheritance.problem.external.Wear;
 /**
  * @author pawel szymczyk
  */
-interface WearAvailibilityNotifier {
-    default void notify(Wear wear) {
+class WearAvailabilityNotifier {
+    void notify(Wear wear) {
 
     }
 }

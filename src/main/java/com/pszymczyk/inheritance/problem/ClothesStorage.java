@@ -12,18 +12,18 @@ import java.util.List;
 class ClothesStorage {
 
     protected final ClothesRepository clothesRepository;
-    protected final WearAvailibilityNotifier wearAvailibilityNotifier;
+    protected final WearAvailabilityNotifier wearAvailabilityNotifier;
     protected final Wishlist wishlist;
 
     public ClothesStorage() {
         this.clothesRepository = new ClothesRepository();
-        this.wearAvailibilityNotifier = new WearAvailibilityNotifier() { };
+        this.wearAvailabilityNotifier = new WearAvailabilityNotifier() { };
         this.wishlist = new Wishlist() { };
     }
 
     public void add(Wear wear) {
         if (wishlist.isOnWishlist(wear)) {
-            wearAvailibilityNotifier.notify(wear);
+            wearAvailabilityNotifier.notify(wear);
         }
         clothesRepository.add(wear);
     }

@@ -1,9 +1,8 @@
 package com.pszymczyk.inheritance.problem;
 
 import com.pszymczyk.inheritance.problem.external.Wear;
+import org.joda.time.Duration;
 import org.junit.Test;
-
-import java.time.Duration;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
@@ -51,7 +50,7 @@ public class CountingClothesStorageTest {
         long endTime = System.currentTimeMillis();
 
         //then
-        assertThat(Duration.ofMillis(endTime-startTime)).isLessThan(Duration.ofMillis(50));
+        assertThat(Duration.millis(endTime-startTime)).isLessThan(Duration.millis(50));
 
     }
 

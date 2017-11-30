@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * @author pawel szymczyk
  */
-class DomainEvent {
+abstract class DomainEvent {
 
     UUID getID() {
         return UUID.randomUUID();

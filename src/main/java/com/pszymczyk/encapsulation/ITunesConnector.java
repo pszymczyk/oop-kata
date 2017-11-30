@@ -1,7 +1,5 @@
 package com.pszymczyk.encapsulation;
 
-import com.pszymczyk.abstraction.ipod.Song;
-
 /**
  * @author pawel szymczyk
  */

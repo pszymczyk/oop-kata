@@ -6,15 +6,15 @@ package com.pszymczyk.strategy;
 interface RebatePolicy {
     Money calculateRebate(Order order);
 
-    static RebatePolicy christmasRabatePolicy() {
-        return order -> null;
-    }
-
-    static RebatePolicy vipRabatePolicy() {
-        return order -> null;
-    }
-
-    static RebatePolicy poorMansRabatePolicy() {
-        return order -> null;
-    }
+//    static RebatePolicy christmasRabatePolicy() {
+//        return order -> null;
+//    }
+//
+//    static RebatePolicy vipRabatePolicy() {
+//        return order -> null;
+//    }
+//
+//    static RebatePolicy poorMansRabatePolicy() {
+//        return order -> null;
+//    }
 }
