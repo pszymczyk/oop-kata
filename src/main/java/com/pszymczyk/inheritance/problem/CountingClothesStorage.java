@@ -6,11 +6,6 @@ import java.util.List;
 
 /**
  * @author pawel szymczyk
- *
- * a wiecie, ze to ma swoja nazwe? dekorator stumienie java?
- *
- * wzorce branzowe jako jezyk craftmana
- *
  */
 class CountingClothesStorage extends ClothesStorage {
 
