@@ -21,6 +21,9 @@ public class ClientTest {
 
         //then
         assertThat(purchase).isEqualTo(new Purchase(purchaseValue));
+
+        //and then
+        assertThat(client.canAfford(new Money("100"))).isFalse();
     }
 
     @Test(expected = CannotChargeClient.class)

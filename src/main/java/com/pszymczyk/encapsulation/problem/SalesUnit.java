@@ -25,6 +25,6 @@ class SalesUnit {
             }
         }
 
-        throw new RuntimeException("Cannot fid empoyee for given id");
+        throw new RuntimeException("Cannot find employee for given id");
     }
 }

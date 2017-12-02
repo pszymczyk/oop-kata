@@ -7,7 +7,6 @@ import java.util.List;
  */
 public class LeakyAbstraction {
 
-
     public static void printFruitsWithStones(List<Fruit> fruits) {
 
         for (Fruit fruit : fruits) {
@@ -21,9 +20,7 @@ public class LeakyAbstraction {
     }
 
     interface Fruit {
-
         String name();
-
         Stone getStone();
     }
 

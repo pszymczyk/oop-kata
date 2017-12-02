@@ -1,6 +1,8 @@
 package com.pszymczyk.warmup;
 
-import com.pszymczyk.generic.Money; /**
+import com.pszymczyk.generic.Money;
+
+/**
  * @author pawel szymczyk
  */
 public class Client {
@@ -20,10 +22,12 @@ public class Client {
             throw new CannotChargeClient(money);
         }
 
+        founds = founds.substract(money);
+
         return new Purchase(money);
     }
 
-    private boolean canAfford(Money money) {
+    public boolean canAfford(Money money) {
         return founds.lessOrEqualTo(money);
     }
 }

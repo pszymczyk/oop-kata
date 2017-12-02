@@ -51,4 +51,8 @@ public class Money {
     public boolean lessOrEqualTo(Money money) {
         return money.value.compareTo(value) <= 0;
     }
+
+    public Money substract(Money money) {
+        return new Money(value.subtract(money.value));
+    }
 }

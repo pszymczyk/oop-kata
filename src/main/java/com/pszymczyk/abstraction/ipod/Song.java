@@ -1,4 +1,4 @@
-package com.pszymczyk.encapsulation;
+package com.pszymczyk.abstraction.ipod;
 
 /**
  * @author pawel szymczyk
