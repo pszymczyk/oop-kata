@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * @author pawel szymczyk
  */
-public class ClothesRepositoryStorageTest {
+public class ClothesStorageTest {
 
     @Test
     public void shouldAddProductToStorage() {
@@ -29,11 +29,10 @@ public class ClothesRepositoryStorageTest {
         ClothesStorage clothesStorage = new ClothesStorage();
 
         //when
-        clothesStorage.addAll(new Wear());
-        clothesStorage.add(new Wear());
+        clothesStorage.addAll(new Wear(), new Wear(), new Wear());
 
         //then
-        assertThat(clothesStorage.getClothes().size());
+        assertThat(clothesStorage.getClothes()).hasSize(3);
     }
 
 }
