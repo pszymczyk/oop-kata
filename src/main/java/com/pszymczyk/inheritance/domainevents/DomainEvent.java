@@ -5,9 +5,9 @@ import java.util.UUID;
 /**
  * @author pawel szymczyk
  */
-abstract class DomainEvent {
+interface DomainEvent {
 
-    UUID getID() {
+    default UUID getID() {
         return UUID.randomUUID();
     }
 }

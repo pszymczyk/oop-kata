@@ -3,5 +3,5 @@ package com.pszymczyk.inheritance.domainevents;
 /**
  * @author pawel szymczyk
  */
-class ItemOutOfStock extends DomainEvent{
+class ItemOutOfStock implements DomainEvent{
 }
