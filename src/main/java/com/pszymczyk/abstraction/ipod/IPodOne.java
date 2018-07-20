@@ -16,9 +16,9 @@ public class IPodOne {
         this.iStoreApi = iStoreApi;
     }
 
-    public boolean uploadSongFromItunes(Long itunesSongId) {
+    public void uploadSongFromItunes(Long itunesSongId) {
         Song song = iStoreApi.getSong(itunesSongId);
-        return songs.add(song);
+        songs.add(song);
     }
 
     public List<Song> playlist(int position) {
