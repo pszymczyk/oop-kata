@@ -21,12 +21,6 @@ class RestTemplateItemBoughtRepository implements ItemBoughtRepository{
 
     @Override
     public void save(final ItemBought itemBought) {
-        RetryExecutor.execute(MAX_TRIES, new RuntimeException("Cannot send ItemBought event"),
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        restTemplate.postForEntity(url, itemBought, Void.class);
-                    }
-                });
+       //todo retry
     }
 }
