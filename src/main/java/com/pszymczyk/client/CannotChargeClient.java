@@ -1,4 +1,4 @@
-package com.pszymczyk.warmup;
+package com.pszymczyk.client;
 
 import com.pszymczyk.generic.Money;
 
