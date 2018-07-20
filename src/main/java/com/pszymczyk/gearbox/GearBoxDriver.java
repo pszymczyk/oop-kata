@@ -4,13 +4,16 @@ class GearBoxDriver {
 
     private final GearCalculators gearCalculators;
     private final EngineMonitoringSystem engineMonitoringSystem;
+    private final GearBox gearBox;
 
     private GearCalculator gearCalculator;
 
     public GearBoxDriver(EngineMonitoringSystem engineMonitoringSystem,
-                         GearCalculators gearCalculators) {
+            GearCalculators gearCalculators,
+            GearBox gearBox) {
         this.engineMonitoringSystem = engineMonitoringSystem;
         this.gearCalculators = gearCalculators;
+        this.gearBox = gearBox;
     }
 
     public void changeMode(Mode mode){
@@ -18,10 +21,15 @@ class GearBoxDriver {
     }
 
     public void handleGas(double threshold){
-        gearCalculator.calculate(engineMonitoringSystem.getCurentRPM(), threshold, 0);
+        gearBox.changeGear(
+                gearCalculator.calculate(gearBox.getCurrentGear(), engineMonitoringSystem.getCurrentRPM(), threshold, 0)
+        );
+
     }
 
-    public void handleBreaks(double force){
-        gearCalculator.calculate(engineMonitoringSystem.getCurentRPM(), 0, force);
+    public void handleBreaks(double breakingForce){
+        gearBox.changeGear(
+                gearCalculator.calculate(gearBox.getCurrentGear(), engineMonitoringSystem.getCurrentRPM(), 0, breakingForce)
+        );
     }
 }

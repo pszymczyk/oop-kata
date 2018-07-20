@@ -1,5 +1,5 @@
 package com.pszymczyk.gearbox;
 
 interface EngineMonitoringSystem {
-    int getCurentRPM();
+    int getCurrentRPM();
 }
