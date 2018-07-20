@@ -1,7 +1,7 @@
 package com.pszymczyk.polymorphism;
 
 import com.pszymczyk.generic.Money;
-import com.pszymczyk.polymorphism.tariff.TaxiTariffElement;
+import com.pszymczyk.polymorphism.TaxiTariffElement;
 
 import java.util.List;
 

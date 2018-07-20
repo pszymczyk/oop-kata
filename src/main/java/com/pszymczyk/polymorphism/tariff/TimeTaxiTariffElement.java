@@ -2,7 +2,7 @@ package com.pszymczyk.polymorphism.tariff;
 
 import com.pszymczyk.generic.Money;
 import com.pszymczyk.polymorphism.RideSummary;
-import com.pszymczyk.polymorphism.tariff.TaxiTariffElement;
+import com.pszymczyk.polymorphism.TaxiTariffElement;
 
 /**
  * @author pawel szymczyk

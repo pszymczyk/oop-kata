@@ -2,11 +2,12 @@ package com.pszymczyk.polymorphism.tariff;
 
 import com.pszymczyk.generic.Money;
 import com.pszymczyk.polymorphism.RideSummary;
+import com.pszymczyk.polymorphism.TaxiTariffElement;
 
 /**
  * @author pawel szymczyk
  */
-public class DoorsSlamTaxiTariffElement implements TaxiTariffElement{
+public class DoorsSlamTaxiTariffElement implements TaxiTariffElement {
 
     private final Money doorSlamFee;
 

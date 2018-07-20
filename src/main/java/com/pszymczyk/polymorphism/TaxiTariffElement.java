@@ -1,4 +1,4 @@
-package com.pszymczyk.polymorphism.tariff;
+package com.pszymczyk.polymorphism;
 
 import com.pszymczyk.generic.Money;
 import com.pszymczyk.polymorphism.RideSummary;
