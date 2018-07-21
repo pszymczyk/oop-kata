@@ -11,7 +11,7 @@ public class CalculatorTest {
     @Test
     public void shouldReturnZeroWhenNoArgumentsGiven() {
         //when
-        int result = calculator.add("");
+        int result = new Calculator().add("");
 
         //then
         assertThat(result).isEqualTo(0);
@@ -19,6 +19,15 @@ public class CalculatorTest {
 
     @Test
     public void shouldReturnGivenArgumentWhenOneArgumentPassed() {
+        //when
+        int result = calculator.add("3");
+
+        //then
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    public void shouldReturnBigNumberWhenIsOnlyOneArgumentPassed() {
         //when
         int result = calculator.add("3999");
 
@@ -37,10 +46,10 @@ public class CalculatorTest {
 
     @Test
     public void shouldAddTwoBiggerNumbers() {
-        //when
+        // when
         int result = calculator.add("500,500");
 
-        //then
+        // then
         assertThat(result).isEqualTo(1000);
     }
 
