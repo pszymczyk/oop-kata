@@ -2,6 +2,7 @@ package com.pszymczyk.inheritance.problem;
 
 import com.pszymczyk.inheritance.problem.external.Wear;
 import org.joda.time.Duration;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -27,6 +28,7 @@ public class CountingClothesStorageTest {
     }
 
     @Test
+    @Ignore
     public void shouldIncrementCounterWhenAddNewClothes() throws Exception {
         //given
         CountingClothesStorage storage = new CountingClothesStorage();

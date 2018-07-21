@@ -1,6 +1,7 @@
 package com.pszymczyk.encapsulation.problem;
 
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -14,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MexicanInternProgrammerSalesUnitFactoryTest {
 
     @Test
+    @Ignore
     public void shouldBreaksEncapsulation() {
         //given
         final Employee john = Employee.boss(1 );
