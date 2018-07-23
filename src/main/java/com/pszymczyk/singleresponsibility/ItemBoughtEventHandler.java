@@ -28,6 +28,7 @@ class ItemBoughtEventHandler {
         while (true) {
             try {
                 restTemplate.postForEntity(url, itemBought, Void.class);
+                return;
             } catch (HttpClientErrorException | HttpServerErrorException ex) {
                 if (++count == MAX_TRIES) {
                     throw new RuntimeException("Cannot send ItemBought event");

@@ -17,8 +17,8 @@ class ClothesStorage {
 
     public ClothesStorage() {
         this.clothesRepository = new ClothesRepository();
-        this.wearAvailabilityNotifier = new WearAvailabilityNotifier() { };
-        this.wishlist = new Wishlist() { };
+        this.wearAvailabilityNotifier = new WearAvailabilityNotifier();
+        this.wishlist = new Wishlist();
     }
 
     public void add(Wear wear) {
