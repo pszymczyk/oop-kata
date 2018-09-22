@@ -7,23 +7,15 @@ import com.pszymczyk.polymorphism.Driver;
 import com.pszymczyk.polymorphism.RideSummary;
 import com.pszymczyk.polymorphism.TaxiTariffElement;
 
-/**
- * @author pawel szymczyk
- */
-public class KmTaxiTariffElement implements TaxiTariffElement {
-
-    private final Money feePerMinute;
-
-    public KmTaxiTariffElement(Money feePerMinute) {
-        this.feePerMinute = feePerMinute;
-    }
+public class NightTaxiTariffElement implements TaxiTariffElement {
 
     @Override
     public boolean isApplicable(Driver driver, LocalDateTime time) {
-        return true;
+        return time.getHour() > 22 || time.getHour() < 5;
     }
 
+    @Override
     public Money calculate(RideSummary rideSummary) {
-        return feePerMinute.multiply(rideSummary.getDistanceInKm());
+        return new Money("2").multiply(rideSummary.getDistanceInKm());
     }
 }
