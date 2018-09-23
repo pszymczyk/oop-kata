@@ -16,11 +16,9 @@ class Taximeter {
     }
 
     public Money calculate(RideSummary rideSummary) {
-        Money cost = Money.zero();
-        for (TaxiTariffElement element: taxiTariffElements) {
-            cost = cost.add(element.calculate(rideSummary));
-        }
-
-        return cost;
+        return taxiTariffElements.stream()
+                                 .map(taxiTariffElement -> taxiTariffElement.calculate(rideSummary))
+                                 .reduce(Money::add)
+                                 .orElse(Money.zero());
     }
 }
