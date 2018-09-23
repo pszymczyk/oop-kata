@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * iPod a thousand songs in your pocket
  */
-public class IPodOne {
+public class IPodOne implements IPod {
 
     private final IStoreApi iStoreApi;
     private final List<Song> songs = new ArrayList<>(1000);
@@ -16,7 +16,7 @@ public class IPodOne {
         this.iStoreApi = iStoreApi;
     }
 
-    public void uploadSongFromItunes(Long itunesSongId) {
+    public void uploadSongFromItunes(long itunesSongId) {
         Song song = iStoreApi.getSong(itunesSongId);
         songs.add(song);
     }
