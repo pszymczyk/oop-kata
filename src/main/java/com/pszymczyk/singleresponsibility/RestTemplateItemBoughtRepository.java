@@ -1,6 +1,8 @@
 package com.pszymczyk.singleresponsibility;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -19,8 +21,18 @@ class RestTemplateItemBoughtRepository implements ItemBoughtRepository{
         this.restTemplate = restTemplate;
     }
 
-    @Override
     public void save(final ItemBought itemBought) {
-       //todo retry
+        RetryExecutor retry = new RetryExecutor.Builder()
+                .retryOnException(HttpClientErrorException.class)
+                .retryOnException(HttpServerErrorException.class)
+                .withCustomFinalException(new RuntimeException("Cannot send ItemBought event"))
+                .withRetryCount(MAX_TRIES)
+                .build(callRemoteResource(itemBought));
+
+        retry.run();
+    }
+
+    private Runnable callRemoteResource(ItemBought itemBought) {
+        return () -> restTemplate.postForEntity(url, itemBought, Void.class);
     }
 }
