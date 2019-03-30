@@ -11,11 +11,11 @@ class Taximeter {
 
     private final List<TaxiTariffElement> taxiTariffElements;
 
-    public Taximeter(List<TaxiTariffElement> taxiTariffElements) {
+    Taximeter(List<TaxiTariffElement> taxiTariffElements) {
         this.taxiTariffElements = taxiTariffElements;
     }
 
-    public Money calculate(RideSummary rideSummary) {
+    Money calculate(RideSummary rideSummary) {
         return taxiTariffElements.stream()
                                  .map(taxiTariffElement -> taxiTariffElement.calculate(rideSummary))
                                  .reduce(Money::add)

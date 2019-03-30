@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import com.pszymczyk.generic.Money;
 
+import static java.time.Duration.ofMinutes;
+import static java.time.Instant.now;
 import static java.time.Instant.parse;
 import static java.time.ZoneId.systemDefault;
 import static java.util.UUID.randomUUID;
@@ -16,7 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class TaximeterTest {
 
-    private final TaximeterFactory taximeterFactory = new TaximeterFactory(Clock.fixed(parse("2007-12-03T10:15:30.00Z"), systemDefault()));
+    private final Clock clock = Clock.fixed(parse("2007-12-03T10:15:30.00Z"), systemDefault());
+    private final TaximeterFactory taximeterFactory = new TaximeterFactory(clock);
 
     @Test
     public void shouldCalculatePriceFromGivenTariff() {
@@ -24,7 +27,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(Driver.regular(randomUUID()));
 
         //when
-        Money cost = taximeter.calculate(new RideSummary(10, 10));
+        Money cost = taximeter.calculate(new RideSummary(10, now(clock), ofMinutes(10)));
 
         //then
         assertThat(cost).isEqualTo(new Money("75"));
@@ -36,7 +39,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(Driver.regular(randomUUID()));
 
         //when
-        Money cost = taximeter.calculate(new RideSummary(10, 1));
+        Money cost = taximeter.calculate(new RideSummary(1, now(clock), ofMinutes(10)));
 
         //then
         assertThat(cost).isEqualTo(new Money("62"));
@@ -48,7 +51,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(Driver.business(randomUUID()));
 
         //when
-        Money cost = taximeter.calculate(new RideSummary(10, 10));
+        Money cost = taximeter.calculate(new RideSummary(10, now(clock), ofMinutes(10)));
 
         //then
         assertThat(cost).isEqualTo(new Money("85"));
@@ -57,11 +60,11 @@ public class TaximeterTest {
     @Test
     public void shouldAddSpecialFeeForNightTravel() {
         //given
-        Taximeter taximeter = new TaximeterFactory(Clock.fixed(parse("2007-12-03T23:55:30.00Z"), systemDefault()))
-                .create(Driver.regular(randomUUID()));
+        Clock clock = Clock.fixed(parse("2007-12-03T23:55:30.00Z"), systemDefault());
+        Taximeter taximeter = new TaximeterFactory(clock).create(Driver.regular(randomUUID()));
 
         //when
-        Money cost = taximeter.calculate(new RideSummary(10, 10));
+        Money cost = taximeter.calculate(new RideSummary(10, now(clock), ofMinutes(10)));
 
         //then
         assertThat(cost).isEqualTo(new Money("95"));

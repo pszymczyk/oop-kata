@@ -1,6 +1,6 @@
 package com.pszymczyk.strategy.tariff;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.pszymczyk.generic.Money;
 import com.pszymczyk.strategy.Driver;
@@ -10,7 +10,7 @@ import com.pszymczyk.strategy.TaxiTariffElement;
 public class BusinessDriverTaxiTariffElement implements TaxiTariffElement {
 
     @Override
-    public boolean isApplicable(Driver driver, LocalDateTime time) {
+    public boolean isApplicable(Driver driver, LocalDate time) {
         return driver.isBusiness();
     }
 

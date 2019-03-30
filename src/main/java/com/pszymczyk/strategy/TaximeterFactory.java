@@ -1,6 +1,7 @@
 package com.pszymczyk.strategy;
 
 import java.time.Clock;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +14,12 @@ import com.pszymczyk.strategy.tariff.NightTaxiTariffElement;
 import com.pszymczyk.strategy.tariff.ShortTravelTaxiTariffElement;
 import com.pszymczyk.strategy.tariff.TimeTaxiTariffElement;
 
-public class TaximeterFactory {
+class TaximeterFactory {
 
     private final List<TaxiTariffElement> tariffElements;
     private final Clock clock;
 
-    public TaximeterFactory(Clock clock) {
+    TaximeterFactory(Clock clock) {
         this.clock = clock;
         this.tariffElements = new ArrayList<>();
         this.tariffElements.add(new DoorsSlamTaxiTariffElement(new Money("5")));
@@ -29,11 +30,11 @@ public class TaximeterFactory {
         this.tariffElements.add(new NightTaxiTariffElement());
     }
 
-    public Taximeter create(Driver driver) {
+    Taximeter create(Driver driver) {
         List<TaxiTariffElement> fees = new ArrayList<>();
 
         for (TaxiTariffElement tariffElement: tariffElements) {
-            if (tariffElement.isApplicable(driver, LocalDateTime.now(clock))) {
+            if (tariffElement.isApplicable(driver, LocalDate.now(clock))) {
                 fees.add(tariffElement);
             }
         }

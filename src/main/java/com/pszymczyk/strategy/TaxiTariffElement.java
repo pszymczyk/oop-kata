@@ -1,6 +1,6 @@
 package com.pszymczyk.strategy;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.pszymczyk.generic.Money;
 
@@ -9,7 +9,7 @@ import com.pszymczyk.generic.Money;
  */
 public interface TaxiTariffElement {
 
-    boolean isApplicable(Driver driver, LocalDateTime time);
+    boolean isApplicable(Driver driver, LocalDate time);
 
     Money calculate(RideSummary rideSummary);
 

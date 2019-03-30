@@ -12,11 +12,11 @@ public class Driver {
     private final UUID id;
     private final Type type;
 
-    public static Driver business(UUID id) {
+    static Driver business(UUID id) {
         return new Driver(id, Type.BUSINNES);
     }
 
-    public static Driver regular(UUID id) {
+    static Driver regular(UUID id) {
         return new Driver(id, Type.REGULAR);
     }
 

@@ -26,7 +26,7 @@ public class Money {
         return new Money(value.add(money.value));
     }
 
-    public Money multiply(int timeInMinutes) {
+    public Money multiply(long timeInMinutes) {
         return new Money(value.multiply(new BigDecimal(timeInMinutes)));
     }
 
