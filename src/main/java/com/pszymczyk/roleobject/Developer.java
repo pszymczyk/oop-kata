@@ -1,12 +1,18 @@
 package com.pszymczyk.roleobject;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 class Developer extends PersonRole {
 
+    private final String[] knowLanguage;
+
+    Developer(String... knowLanguage) {
+        this.knowLanguage = knowLanguage;
+    }
+
     List<String> programingLanguages() {
-        return Collections.singletonList("Java");
+        return Arrays.asList(knowLanguage);
     }
 
     @Override
