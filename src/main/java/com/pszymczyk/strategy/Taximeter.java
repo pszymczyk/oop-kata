@@ -1,4 +1,4 @@
-package com.pszymczyk.polymorphism;
+package com.pszymczyk.strategy;
 
 import com.pszymczyk.generic.Money;
 

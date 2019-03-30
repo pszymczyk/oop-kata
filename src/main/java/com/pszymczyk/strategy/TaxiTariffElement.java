@@ -1,9 +1,8 @@
-package com.pszymczyk.polymorphism;
+package com.pszymczyk.strategy;
 
 import java.time.LocalDateTime;
 
 import com.pszymczyk.generic.Money;
-import com.pszymczyk.polymorphism.RideSummary;
 
 /**
  * @author pawel szymczyk

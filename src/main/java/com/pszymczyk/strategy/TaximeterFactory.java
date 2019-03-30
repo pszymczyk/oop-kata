@@ -1,4 +1,4 @@
-package com.pszymczyk.polymorphism;
+package com.pszymczyk.strategy;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pszymczyk.generic.Money;
-import com.pszymczyk.polymorphism.tariff.BusinessDriverTaxiTariffElement;
-import com.pszymczyk.polymorphism.tariff.DoorsSlamTaxiTariffElement;
-import com.pszymczyk.polymorphism.tariff.KmTaxiTariffElement;
-import com.pszymczyk.polymorphism.tariff.NightTaxiTariffElement;
-import com.pszymczyk.polymorphism.tariff.ShortTravelTaxiTariffElement;
-import com.pszymczyk.polymorphism.tariff.TimeTaxiTariffElement;
+import com.pszymczyk.strategy.tariff.BusinessDriverTaxiTariffElement;
+import com.pszymczyk.strategy.tariff.DoorsSlamTaxiTariffElement;
+import com.pszymczyk.strategy.tariff.KmTaxiTariffElement;
+import com.pszymczyk.strategy.tariff.NightTaxiTariffElement;
+import com.pszymczyk.strategy.tariff.ShortTravelTaxiTariffElement;
+import com.pszymczyk.strategy.tariff.TimeTaxiTariffElement;
 
 public class TaximeterFactory {
 

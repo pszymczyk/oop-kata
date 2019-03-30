@@ -1,11 +1,11 @@
-package com.pszymczyk.polymorphism.tariff;
+package com.pszymczyk.strategy.tariff;
 
 import java.time.LocalDateTime;
 
 import com.pszymczyk.generic.Money;
-import com.pszymczyk.polymorphism.Driver;
-import com.pszymczyk.polymorphism.RideSummary;
-import com.pszymczyk.polymorphism.TaxiTariffElement;
+import com.pszymczyk.strategy.Driver;
+import com.pszymczyk.strategy.RideSummary;
+import com.pszymczyk.strategy.TaxiTariffElement;
 
 public class BusinessDriverTaxiTariffElement implements TaxiTariffElement {
 
