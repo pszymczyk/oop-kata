@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class TaximeterTest {
 
-    private static final Driver NEW = Driver.regular(randomUUID());
+    private static final Driver NEW = new Driver(randomUUID());
     private static final Driver REGULAR = Driver.regular(randomUUID());
     private static final Driver BUSINESS = Driver.business(randomUUID());
     private static final Clock clock = Clock.fixed(parse("2007-12-03T10:15:30.00Z"), systemDefault());

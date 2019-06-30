@@ -20,6 +20,11 @@ public class Driver {
         return new Driver(id, Type.REGULAR);
     }
 
+    public Driver(UUID id) {
+        this.id = id;
+        type = null;
+    }
+
     private Driver(UUID id, Type type) {
         this.id = id;
         this.type = type;
@@ -27,5 +32,9 @@ public class Driver {
 
     public boolean isBusiness() {
         return type == Type.BUSINNES;
+    }
+
+    public boolean isRegular() {
+        return type == Type.REGULAR;
     }
 }
