@@ -1,21 +1,13 @@
-package com.pszymczyk.strategy.tariff;
+package com.pszymczyk.strategy.fees;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.pszymczyk.generic.Money;
-import com.pszymczyk.strategy.Driver;
 import com.pszymczyk.strategy.RideSummary;
-import com.pszymczyk.strategy.TaxiTariffElement;
 
 import static java.time.ZoneId.systemDefault;
 
-public class NightTaxiTariffElement implements TaxiTariffElement {
-
-    @Override
-    public boolean isApplicable(Driver driver, LocalDate time) {
-        return true;
-    }
+public class NightRightFee implements Fee {
 
     @Override
     public Money calculate(RideSummary rideSummary) {
