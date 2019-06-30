@@ -8,11 +8,7 @@ import com.pszymczyk.strategy.RideSummary;
  */
 public class DoorsSlamFee implements Fee {
 
-    private final Money doorSlamFee;
-
-    public DoorsSlamFee(Money doorSlamFee) {
-        this.doorSlamFee = doorSlamFee;
-    }
+    private static final Money doorSlamFee = new Money("5");
 
     public Money calculate(RideSummary rideSummary) {
         return doorSlamFee;

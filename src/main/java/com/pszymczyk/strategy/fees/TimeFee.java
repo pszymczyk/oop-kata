@@ -8,11 +8,7 @@ import com.pszymczyk.strategy.RideSummary;
  */
 public class TimeFee implements Fee {
 
-    private final Money feePerMinute;
-
-    public TimeFee(Money feePerMinute) {
-        this.feePerMinute = feePerMinute;
-    }
+    private static final Money feePerMinute = new Money("5");
 
     public Money calculate(RideSummary rideSummary) {
         return feePerMinute.multiply(rideSummary.getDuration().toMinutes());

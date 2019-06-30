@@ -8,11 +8,7 @@ import com.pszymczyk.strategy.RideSummary;
  */
 public class KmFee implements Fee {
 
-    private final Money feePerMinute;
-
-    public KmFee(Money feePerMinute) {
-        this.feePerMinute = feePerMinute;
-    }
+    private final Money feePerMinute = new Money("2");
 
     public Money calculate(RideSummary rideSummary) {
         return feePerMinute.multiply(rideSummary.getDistanceInKm());
