@@ -7,6 +7,10 @@ class Calculator {
             return 0;
         }
 
-        return Integer.valueOf(parameters);
+        if (!parameters.contains(",")) {
+            return Integer.valueOf(parameters);
+        }
+
+        return Integer.valueOf(parameters.charAt(0)+"") + Integer.valueOf(parameters.charAt(2)+"");
     }
 }

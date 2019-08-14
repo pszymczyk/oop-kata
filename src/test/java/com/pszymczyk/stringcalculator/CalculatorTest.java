@@ -29,4 +29,16 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(5);
     }
+
+    @Test
+    public void shouldReturnSumOfGivenArguments() {
+        //given
+        Calculator calculator = new Calculator();
+
+        //when
+        int result = calculator.add("5,9");
+
+        //then
+        assertThat(result).isEqualTo(14);
+    }
 }
