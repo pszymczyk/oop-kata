@@ -6,51 +6,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
-    private static final Calculator calculator = new Calculator();
-
     @Test
-    public void shouldReturnZeroWhenNoArgumentsGiven() {
+    public void shouldReturnZeroWhenNoArgumentPassed() {
+        //given
+        Calculator calculator = new Calculator();
+
         //when
-        int result = new Calculator().add("");
+        int result = calculator.add("");
 
         //then
         assertThat(result).isEqualTo(0);
     }
 
     @Test
-    public void shouldReturnGivenArgumentWhenOneArgumentPassed() {
+    public void shouldReturnArgumentWhenOneArgumentPassed() {
+        //given
+        Calculator calculator = new Calculator();
+
         //when
-        int result = calculator.add("3");
+        int result = calculator.add("5");
 
         //then
-        assertThat(result).isEqualTo(3);
+        assertThat(result).isEqualTo(5);
     }
-
-    @Test
-    public void shouldReturnBigNumberWhenIsOnlyOneArgumentPassed() {
-        //when
-        int result = calculator.add("3999");
-
-        //then
-        assertThat(result).isEqualTo(3999);
-    }
-
-    @Test
-    public void shouldAddTwoArguments() {
-        //when
-        int result = calculator.add("3,9");
-
-        //then
-        assertThat(result).isEqualTo(12);
-    }
-
-    @Test
-    public void shouldAddTwoBiggerNumbers() {
-        // when
-        int result = calculator.add("500,500");
-
-        // then
-        assertThat(result).isEqualTo(1000);
-    }
-
 }
