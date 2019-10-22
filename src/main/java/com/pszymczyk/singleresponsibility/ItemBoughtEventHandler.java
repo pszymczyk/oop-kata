@@ -2,6 +2,7 @@ package com.pszymczyk.singleresponsibility;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.event.EventListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -16,9 +17,12 @@ class ItemBoughtEventHandler {
     private final String url;
     private final RestTemplate restTemplate;
 
-    public ItemBoughtEventHandler(String url) {
+    private final KafkaTemplate<String, ItemBought> kafkaTemplate;
+
+    public ItemBoughtEventHandler(String url, KafkaTemplate<String, ItemBought> kafkaTemplate) {
         this.url = url;
         this.restTemplate = restTemplate();
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @EventListener
@@ -27,7 +31,11 @@ class ItemBoughtEventHandler {
 
         while (true) {
             try {
-                restTemplate.postForEntity(url, itemBought, Void.class);
+                if (itemBought.getType() == ItemBought.Type.MOBILE) {
+                    restTemplate.postForEntity(url, itemBought, Void.class);
+                } else {
+                    kafkaTemplate.sendDefault(itemBought);
+                }
                 return;
             } catch (HttpClientErrorException | HttpServerErrorException ex) {
                 if (++count == MAX_TRIES) {
