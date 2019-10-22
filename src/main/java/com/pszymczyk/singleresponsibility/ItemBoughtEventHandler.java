@@ -29,8 +29,8 @@ class ItemBoughtEventHandler {
     public void handle(ItemBought itemBought) {
         int count = 0;
 
-        while (true) {
-            if (itemBought.getType() == ItemBought.Type.MOBILE) {
+        if (itemBought.getType() == ItemBought.Type.MOBILE) {
+            while (true) {
                 try {
                     restTemplate.postForEntity(url, itemBought, Void.class);
                     return;
@@ -39,11 +39,11 @@ class ItemBoughtEventHandler {
                         throw new RuntimeException("Cannot send ItemBought event");
                     }
                 }
-            } else {
-                kafkaTemplate.sendDefault(itemBought);
-                return;
             }
+        } else {
+            kafkaTemplate.sendDefault(itemBought);
         }
+
     }
 
     private RestTemplate restTemplate() {
