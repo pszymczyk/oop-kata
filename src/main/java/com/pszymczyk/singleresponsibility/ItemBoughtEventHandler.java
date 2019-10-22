@@ -30,17 +30,18 @@ class ItemBoughtEventHandler {
         int count = 0;
 
         while (true) {
-            try {
-                if (itemBought.getType() == ItemBought.Type.MOBILE) {
+            if (itemBought.getType() == ItemBought.Type.MOBILE) {
+                try {
                     restTemplate.postForEntity(url, itemBought, Void.class);
-                } else {
-                    kafkaTemplate.sendDefault(itemBought);
+                    return;
+                } catch (HttpClientErrorException | HttpServerErrorException ex) {
+                    if (++count == MAX_TRIES) {
+                        throw new RuntimeException("Cannot send ItemBought event");
+                    }
                 }
+            } else {
+                kafkaTemplate.sendDefault(itemBought);
                 return;
-            } catch (HttpClientErrorException | HttpServerErrorException ex) {
-                if (++count == MAX_TRIES) {
-                    throw new RuntimeException("Cannot send ItemBought event");
-                }
             }
         }
     }
