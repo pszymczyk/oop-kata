@@ -1,15 +1,14 @@
 package com.pszymczyk.stringcalculator;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
-    private static final Calculator calculator = new Calculator();
-
     @Test
-    public void shouldReturnZeroWhenNoArgumentsGiven() {
+    public void should_return_zero_when_no_args_given() {
         //when
         int result = new Calculator().add("");
 
@@ -18,39 +17,21 @@ public class CalculatorTest {
     }
 
     @Test
-    public void shouldReturnGivenArgumentWhenOneArgumentPassed() {
+    public void should_return_argument_when_one_argument_passed() {
         //when
-        int result = calculator.add("3");
+        int result = new Calculator().add("3");
 
         //then
         assertThat(result).isEqualTo(3);
     }
 
     @Test
-    public void shouldReturnBigNumberWhenIsOnlyOneArgumentPassed() {
+    public void should_return_add_two_arguments() {
         //when
-        int result = calculator.add("3999");
+        int result = new Calculator().add("3,4");
 
         //then
-        assertThat(result).isEqualTo(3999);
-    }
-
-    @Test
-    public void shouldAddTwoArguments() {
-        //when
-        int result = calculator.add("3,9");
-
-        //then
-        assertThat(result).isEqualTo(12);
-    }
-
-    @Test
-    public void shouldAddTwoBiggerNumbers() {
-        // when
-        int result = calculator.add("500,500");
-
-        // then
-        assertThat(result).isEqualTo(1000);
+        assertThat(result).isEqualTo(7);
     }
 
 }
