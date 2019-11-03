@@ -1,22 +1,19 @@
 package com.pszymczyk.roleobject;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-class Developer extends PersonRole {
+import static java.util.Collections.unmodifiableList;
 
-    private final String[] knowLanguage;
+class Developer implements PersonRole {
 
-    Developer(String... knowLanguage) {
-        this.knowLanguage = knowLanguage;
+    private final List<String> knownLanguages = new ArrayList<>();
+
+    void addKnownLanguage(String knownLanguage) {
+        knownLanguages.add(knownLanguage);
     }
 
-    List<String> programingLanguages() {
-        return Arrays.asList(knowLanguage);
-    }
-
-    @Override
-    public boolean hasType(String roleName) {
-        return "developer".equalsIgnoreCase(roleName);
+    List<String> getProgramingLanguages() {
+        return unmodifiableList(knownLanguages);
     }
 }

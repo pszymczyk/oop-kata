@@ -2,31 +2,47 @@ package com.pszymczyk.roleobject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 class Person {
 
-    private String id;
-    private final List<PersonRole> roles;
+    private final String id;
+    private final List<PersonRole> roles = new ArrayList<>();
 
-    Person() {
-        this.roles = new ArrayList<>();
+    public Person(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     void addRole(PersonRole value) {
         roles.add(value);
     }
 
-    boolean hasRole(String roleName) {
+    <T extends PersonRole> Optional<T> getRole(Class<T> tClass) {
         return roles.stream()
-                .anyMatch(role -> role.hasType(roleName));
-
+                    .filter(role -> role.getClass().isAssignableFrom(tClass))
+                    .map(tClass::cast)
+                    .findFirst();
     }
 
-    <T extends PersonRole> T roleOf(String roleName, Class<T> tClass) {
-        return roles.stream()
-             .filter(role -> role.hasType(roleName))
-             .map(role -> tClass.cast(role))
-             .findAny()
-             .orElseThrow(() -> new CouldNotFindGivenRole(this.id, roleName));
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Person person = (Person) o;
+        return id.equals(person.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

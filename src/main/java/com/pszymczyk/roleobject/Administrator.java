@@ -1,16 +1,20 @@
 package com.pszymczyk.roleobject;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-class Administrator extends PersonRole {
+import static java.util.Collections.unmodifiableList;
 
-    List<String> getSupportedSustems() {
-        return Arrays.asList("Graphite", "Kubernetes", "Oracle");
+class Administrator implements PersonRole {
+
+    private final List<String> supportedSystems = new ArrayList<>();
+
+    void addSupportedSystem(String supportedSystem) {
+        supportedSystems.add(supportedSystem);
     }
 
-    @Override
-    boolean hasType(String roleName) {
-        return "admin".equals(roleName);
+    List<String> getSupportedSystems() {
+        return unmodifiableList(supportedSystems);
     }
+
 }
