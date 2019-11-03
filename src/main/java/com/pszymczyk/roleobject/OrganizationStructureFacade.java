@@ -15,17 +15,22 @@ class OrganizationStructureFacade {
     List<String> getProgrammingLanguagesOf(String personId) {
         Person person = isPartOfOrganization(personId);
 
-        Developer developer = person.getRole(Developer.class)
-                                    .orElseThrow(() -> new CouldNotFindGivenRole(personId, Developer.class.getSimpleName()));
+        if (!Developer.class.isAssignableFrom(person.getClass())){
+            throw new CouldNotFindGivenRole(person.getId(), Developer.class.getSimpleName());
+        }
+
+        Developer developer = (Developer) person;
         return developer.getProgramingLanguages();
     }
 
     List<String> getSupportedSystemsOf(String personId) {
         Person person = isPartOfOrganization(personId);
 
+        if (!Administrator.class.isAssignableFrom(person.getClass())){
+            throw new CouldNotFindGivenRole(person.getId(), Administrator.class.getSimpleName());
+        }
 
-        Administrator administrator = person.getRole(Administrator.class)
-                                            .orElseThrow(() -> new CouldNotFindGivenRole(personId, Administrator.class.getSimpleName()));
+        Administrator administrator = (Administrator) person;
         return administrator.getSupportedSystems();
     }
 
