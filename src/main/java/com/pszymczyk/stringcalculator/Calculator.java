@@ -1,15 +1,19 @@
 package com.pszymczyk.stringcalculator;
 
-public class Calculator {
+import static java.lang.Integer.valueOf;
 
-    public int add(String args) {
+class Calculator {
+
+    int add(String args) {
         if (args.isEmpty()) {
             return 0;
         }
 
-        char first = args.charAt(0);
-        char second = args.charAt(2);
+        String[] split = args.split(",");
+        if (split.length == 1) {
+            return valueOf(split[0]);
+        }
 
-        return Integer.valueOf(args);
+        return valueOf(split[0]) + valueOf(split[1]);
     }
 }
