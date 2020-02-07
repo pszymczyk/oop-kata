@@ -13,6 +13,6 @@ public class Calculator {
             return Integer.valueOf(s);
         }
 
-        return Integer.valueOf(split[0]) + Integer.valueOf(split[1]);
+        return Integer.valueOf(s.charAt(0)+"") + Integer.valueOf(s.charAt(2)+"");
     }
 }
