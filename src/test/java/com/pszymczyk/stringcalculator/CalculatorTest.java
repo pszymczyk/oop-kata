@@ -1,6 +1,5 @@
 package com.pszymczyk.stringcalculator;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,30 +7,38 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CalculatorTest {
 
     @Test
-    public void should_return_zero_when_no_args_given() {
+    public void Should_return_zero_when_no_arguments_given() {
+        //given
+        Calculator calculator = new Calculator();
+
         //when
-        int result = new Calculator().add("");
+        int result = calculator.add("");
 
         //then
         assertThat(result).isEqualTo(0);
     }
 
     @Test
-    public void should_return_argument_when_one_argument_passed() {
+    public void Should_return_argument_when_one_argument_given() {
+        //given
+        Calculator calculator = new Calculator();
+
         //when
-        int result = new Calculator().add("3");
+        int result = calculator.add("5");
 
         //then
-        assertThat(result).isEqualTo(3);
+        assertThat(result).isEqualTo(5);
     }
 
     @Test
-    public void should_return_add_two_arguments() {
+    public void Should_sum_of_two_arguments() {
+        //given
+        Calculator calculator = new Calculator();
+
         //when
-        int result = new Calculator().add("3,4");
+        int result = calculator.add("5");
 
         //then
-        assertThat(result).isEqualTo(7);
+        assertThat(result).isEqualTo(5);
     }
-
 }

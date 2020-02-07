@@ -2,14 +2,17 @@ package com.pszymczyk.stringcalculator;
 
 public class Calculator {
 
-    public int add(String args) {
-        if (args.isEmpty()) {
+    public int add(String s) {
+        if (s.isEmpty()) {
             return 0;
         }
 
-        char first = args.charAt(0);
-        char second = args.charAt(2);
+        String[] split = s.split(",");
 
-        return Integer.valueOf(args);
+        if (split.length == 1) {
+            return Integer.valueOf(s);
+        }
+
+        return Integer.valueOf(split[0]) + Integer.valueOf(split[1]);
     }
 }
