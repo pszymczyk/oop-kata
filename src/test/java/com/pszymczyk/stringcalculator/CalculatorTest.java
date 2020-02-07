@@ -36,10 +36,10 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         //when
-        int result = calculator.add("5");
+        int result = calculator.add("5,5");
 
         //then
-        assertThat(result).isEqualTo(5);
+        assertThat(result).isEqualTo(10);
     }
 
 
