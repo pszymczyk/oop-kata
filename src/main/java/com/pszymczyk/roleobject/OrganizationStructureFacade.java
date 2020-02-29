@@ -12,26 +12,24 @@ class OrganizationStructureFacade {
         organization.put(person.getId(), person);
     }
 
-    List<String> getProgrammingLanguagesOf(String personId) {
+    Developer getDeveloper(String personId) {
         Person person = isPartOfOrganization(personId);
 
         if (!Developer.class.isAssignableFrom(person.getClass())){
             throw new CouldNotFindGivenRole(person.getId(), Developer.class.getSimpleName());
         }
 
-        Developer developer = (Developer) person;
-        return developer.getProgramingLanguages();
+        return (Developer) person;
     }
 
-    List<String> getSupportedSystemsOf(String personId) {
+    Administrator getAdministrator(String personId) {
         Person person = isPartOfOrganization(personId);
 
         if (!Administrator.class.isAssignableFrom(person.getClass())){
             throw new CouldNotFindGivenRole(person.getId(), Administrator.class.getSimpleName());
         }
 
-        Administrator administrator = (Administrator) person;
-        return administrator.getSupportedSystems();
+        return (Administrator) person;
     }
 
     private Person isPartOfOrganization(String personId) {

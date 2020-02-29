@@ -1,6 +1,5 @@
 package com.pszymczyk.roleobject;
 
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.assertj.core.api.Assertions;
@@ -22,43 +21,43 @@ public class OrganizationStructureTest {
     @Test
     public void testDeveloperSkills() {
         //given
-        Developer developer = getDeveloper("ruby");
-        facade.addPersonToOrganization(developer);
+        Developer rubyDeveloper = getDeveloper("ruby");
+        facade.addPersonToOrganization(rubyDeveloper);
 
         //when
-        List<String> programmingLanguages = facade.getProgrammingLanguagesOf(developer.getId());
+        Developer developer = facade.getDeveloper(rubyDeveloper.getId());
 
         //then
-        assertThat(programmingLanguages).containsExactly("ruby");
+        assertThat(developer.getProgramingLanguages()).containsExactly("ruby");
     }
 
     @Test
     public void testAdminSkills() {
         //given
-        Administrator administrator = getAdministrator("kubernetes");
-        facade.addPersonToOrganization(administrator);
+        Administrator kubernetesAdministrator = getAdministrator("kubernetes");
+        facade.addPersonToOrganization(kubernetesAdministrator);
 
         //when
-        List<String> supportedSystems = facade.getSupportedSystemsOf(administrator.getId());
+        Administrator administrator = facade.getAdministrator(kubernetesAdministrator.getId());
 
         //then
-        assertThat(supportedSystems).containsExactly("kubernetes");
+        assertThat(administrator.getSupportedSystems()).containsExactly("kubernetes");
     }
 
     @Test
     public void notAllDevelopersAreAdmins() {
         //given
-        Developer developer = getDeveloper("ruby");
-        facade.addPersonToOrganization(developer);
+        Developer rubyDeveloper = getDeveloper("ruby");
+        facade.addPersonToOrganization(rubyDeveloper);
 
         //when
-        List<String> programmingLanguages = facade.getProgrammingLanguagesOf(developer.getId());
+        Developer developer = facade.getDeveloper(rubyDeveloper.getId());
 
         //then
-        assertThat(programmingLanguages).containsExactly("ruby");
+        assertThat(developer.getProgramingLanguages()).containsExactly("ruby");
 
         //and
-        Throwable thrown = Assertions.catchThrowable(() -> facade.getSupportedSystemsOf(developer.getId()));
+        Throwable thrown = Assertions.catchThrowable(() -> facade.getAdministrator(developer.getId()));
 
         //then
         assertThat(thrown).isInstanceOf(CouldNotFindGivenRole.class).hasMessageContaining(Administrator.class.getSimpleName());
@@ -67,17 +66,17 @@ public class OrganizationStructureTest {
     @Test
     public void notAllAdminsAreDevelopers() {
         //given
-        Administrator administrator = getAdministrator("kubernetes");
-        facade.addPersonToOrganization(administrator);
+        Administrator kubernetesAdministrator = getAdministrator("kubernetes");
+        facade.addPersonToOrganization(kubernetesAdministrator);
 
         //when
-        List<String> supportedSystems = facade.getSupportedSystemsOf(administrator.getId());
+        Administrator administrator = facade.getAdministrator(kubernetesAdministrator.getId());
 
         //then
-        assertThat(supportedSystems).containsExactly("kubernetes");
+        assertThat(administrator.getSupportedSystems()).containsExactly("kubernetes");
 
         //and
-        Throwable thrown = Assertions.catchThrowable(() -> facade.getProgrammingLanguagesOf(administrator.getId()));
+        Throwable thrown = Assertions.catchThrowable(() -> facade.getDeveloper(administrator.getId()));
 
         //then
         assertThat(thrown).isInstanceOf(CouldNotFindGivenRole.class).hasMessageContaining(Developer.class.getSimpleName());
@@ -92,17 +91,17 @@ public class OrganizationStructureTest {
         facade.addPersonToOrganization(person);
 
         //when
-        List<String> programmingLanguages = facade.getProgrammingLanguagesOf(person.getId());
+        Developer developer = facade.getDeveloper(person.getId());
 
         //then
-        assertThat(programmingLanguages)
+        assertThat(developer.getProgramingLanguages())
                 .containsExactly("go");
 
         //and
-        List<String> supportedSystems = facade.getSupportedSystemsOf(person.getId());
+        Administrator administrator = facade.getAdministrator(person.getId());
 
         //then
-        assertThat(supportedSystems)
+        assertThat(administrator.getSupportedSystems())
                 .containsExactly("kubernetes");
     }
 
