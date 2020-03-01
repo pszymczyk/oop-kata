@@ -34,7 +34,7 @@ public class PersonTest {
 
         //then
         Optional<Administrator> administrator = person.getRole(Administrator.class);
-        assertThat(administrator).isFalse();
+        assertThat(administrator).isEmpty();
     }
 */
 }
