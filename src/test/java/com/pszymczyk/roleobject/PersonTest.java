@@ -20,6 +20,7 @@ public class PersonTest {
         //then
         Optional<Developer> developer = person.getRole(Developer.class);
         assertThat(developer).isPresent()
+                             .get()
                              .isInstanceOf(PersonRole.class)
                              .isNotInstanceOf(Person.class);
     }
