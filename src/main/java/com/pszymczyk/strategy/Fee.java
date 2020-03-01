@@ -3,7 +3,7 @@ package com.pszymczyk.strategy;
 /**
  * @author pawel szymczyk
  */
-public interface Fee {
+interface Fee {
 
     Money calculate(RideSummary rideSummary);
 

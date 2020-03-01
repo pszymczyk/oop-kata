@@ -2,7 +2,7 @@ package com.pszymczyk.strategy;
 
 import java.util.UUID;
 
-public class Driver {
+class Driver {
 
     enum Type {
         REGULAR,
@@ -20,7 +20,7 @@ public class Driver {
         return new Driver(id, Type.REGULAR);
     }
 
-    public Driver(UUID id) {
+    Driver(UUID id) {
         this.id = id;
         type = null;
     }
@@ -30,11 +30,11 @@ public class Driver {
         this.type = type;
     }
 
-    public boolean isBusiness() {
+    boolean isBusiness() {
         return type == Type.BUSINESS;
     }
 
-    public boolean isRegular() {
+    boolean isRegular() {
         return type == Type.REGULAR;
     }
 }

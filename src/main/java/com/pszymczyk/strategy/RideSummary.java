@@ -6,26 +6,26 @@ import java.time.Instant;
 /**
  * @author pawel szymczyk
  */
-public class RideSummary {
+class RideSummary {
     private final int distanceInKm;
     private final Instant startTime;
     private final Duration duration;
 
-    public RideSummary(int distanceInKm, Instant startTime, Duration duration) {
+    RideSummary(int distanceInKm, Instant startTime, Duration duration) {
         this.distanceInKm = distanceInKm;
         this.startTime = startTime;
         this.duration = duration;
     }
 
-    public int getDistanceInKm() {
+    int getDistanceInKm() {
         return distanceInKm;
     }
 
-    public Instant getStartTime() {
+    Instant getStartTime() {
         return startTime;
     }
 
-    public Duration getDuration() {
+    Duration getDuration() {
         return duration;
     }
 }
