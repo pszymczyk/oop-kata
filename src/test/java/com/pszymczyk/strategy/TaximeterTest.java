@@ -31,7 +31,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(NEW);
 
         //when
-        taximeter.finish(NEW, new RideSummary(10, now(clock), ofMinutes(10)), clock);
+        taximeter.finish(new RideSummary(10, now(clock), ofMinutes(10)), clock);
 
         //then
         assertThat(taximeter.sumUpTheDay(LocalDate.now(clock))).isEqualTo(new Money("25"));
@@ -43,7 +43,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(REGULAR);
 
         //when
-        taximeter.finish(REGULAR, new RideSummary(10, now(clock), ofMinutes(10)), clock);
+        taximeter.finish(new RideSummary(10, now(clock), ofMinutes(10)), clock);
 
         //then
         assertThat(taximeter.sumUpTheDay(LocalDate.now(clock))).isEqualTo(new Money("75"));
@@ -55,7 +55,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(BUSINESS);
 
         //when
-        taximeter.finish(BUSINESS, new RideSummary(10, now(clock), ofMinutes(10)), clock);
+        taximeter.finish(new RideSummary(10, now(clock), ofMinutes(10)), clock);
 
         //then
         assertThat(taximeter.sumUpTheDay(LocalDate.now(clock))).isEqualTo(new Money("85"));
@@ -68,7 +68,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(REGULAR);
 
         //when
-        taximeter.finish(REGULAR, new RideSummary(10, now(clock), ofMinutes(10)), clock);
+        taximeter.finish(new RideSummary(10, now(clock), ofMinutes(10)), clock);
 
         //then
         assertThat(taximeter.sumUpTheDay(LocalDate.now(clock))).isEqualTo(new Money("95"));
@@ -81,7 +81,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(BUSINESS);
 
         //when
-        taximeter.finish(BUSINESS, new RideSummary(10, now(clock), ofMinutes(10)), clock);
+        taximeter.finish(new RideSummary(10, now(clock), ofMinutes(10)), clock);
 
         //then
         assertThat(taximeter.sumUpTheDay(LocalDate.now(clock))).isEqualTo(new Money("105"));
@@ -94,7 +94,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(REGULAR);
 
         //when
-        taximeter.finish(REGULAR, new RideSummary(1, now(clock), ofMinutes(10)), clock);
+        taximeter.finish(new RideSummary(1, now(clock), ofMinutes(10)), clock);
 
         //then
         assertThat(taximeter.sumUpTheDay(LocalDate.now(clock))).isEqualTo(new Money("62"));
@@ -108,7 +108,7 @@ public class TaximeterTest {
         Taximeter taximeter = taximeterFactory.create(NEW);
 
         //when
-        taximeter.finish(null, new RideSummary(10, now(clock), ofMinutes(10)), clock);
+        taximeter.finish(new RideSummary(10, now(clock), ofMinutes(10)), clock);
 
         //then
         assertThat(taximeter.sumUpTheDay(LocalDate.now(clock))).isEqualTo(new Money("25"));
@@ -118,7 +118,7 @@ public class TaximeterTest {
         // taximeter.updateBillingStrategy(getTestConfiguration(REGULAR, BUSINESS).get(REGULAR));
 
         //when
-        taximeter.finish(null, new RideSummary(10, now(clock), ofMinutes(10)), clock);
+        taximeter.finish(new RideSummary(10, now(clock), ofMinutes(10)), clock);
 
         //then
         assertThat(taximeter.sumUpTheDay(LocalDate.now(clock))).isEqualTo(new Money("25").add(new Money("75")));
