@@ -5,13 +5,9 @@ import java.util.List;
 
 import static java.util.Collections.unmodifiableList;
 
-class Developer extends Person {
+class Developer implements PersonRole {
 
     private final List<String> knownLanguages = new ArrayList<>();
-
-    Developer(String id) {
-        super(id);
-    }
 
     void addKnownLanguage(String knownLanguage) {
         knownLanguages.add(knownLanguage);
@@ -20,5 +16,4 @@ class Developer extends Person {
     List<String> getProgramingLanguages() {
         return unmodifiableList(knownLanguages);
     }
-
 }

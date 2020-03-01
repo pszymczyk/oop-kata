@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PersonTest {
 
-/*
     @Test
     public void shouldAddRole() {
         //given
@@ -18,10 +17,10 @@ public class PersonTest {
         person.addRole(new Developer());
 
         //then
-        Optional<Developer> developer = person.getRole(Developer.class);
-        assertThat(developer).isPresent()
-                             .isInstanceOf(PersonRole.class)
-                             .isNotInstanceOf(Person.class);
+        assertThat(person.getRole(Developer.class)).isPresent()
+                                                   .get()
+                                                   .isInstanceOf(PersonRole.class)
+                                                   .isNotInstanceOf(Person.class);
     }
 
     @Test
@@ -36,5 +35,4 @@ public class PersonTest {
         Optional<Administrator> administrator = person.getRole(Administrator.class);
         assertThat(administrator).isEmpty();
     }
-*/
 }

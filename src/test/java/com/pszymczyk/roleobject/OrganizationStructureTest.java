@@ -4,7 +4,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -83,13 +82,10 @@ public class OrganizationStructureTest {
     }
 
     @Test
-    @Ignore
     public void testDevopsSkills() {
         //given
         String personId = "devops_" + randomInt();
-        Person person = new Person(personId);
-        //TODO
-        facade.addPersonToOrganization(person);
+        facade.addPersonToOrganization(getDevops(personId));
 
         //when
         Developer developer = facade.getDeveloper(personId);
@@ -104,16 +100,31 @@ public class OrganizationStructureTest {
         assertThat(administrator.getSupportedSystems()).containsExactly("kubernetes");
     }
 
-    private Developer getDeveloper(String personId) {
-        Developer developer = new Developer(personId);
-        developer.addKnownLanguage("ruby");
-        return developer;
+    private Person getDevops(String personId) {
+        Person person = new Person(personId);
+        Developer developer = new Developer();
+        developer.addKnownLanguage("go");
+        person.addRole(developer);
+        Administrator administrator = new Administrator();
+        administrator.addSupportedSystem("kubernetes");
+        person.addRole(administrator);
+        return person;
     }
 
-    private Administrator getAdministrator(String personId) {
-        Administrator administrator = new Administrator(personId);
+    private Person getDeveloper(String personId) {
+        Person person = new Person(personId);
+        Developer developer = new Developer();
+        developer.addKnownLanguage("ruby");
+        person.addRole(developer);
+        return person;
+    }
+
+    private Person getAdministrator(String personId) {
+        Person person = new Person(personId);
+        Administrator administrator = new Administrator();
         administrator.addSupportedSystem("kubernetes");
-        return administrator;
+        person.addRole(administrator);
+        return person;
     }
 
     private int randomInt() {

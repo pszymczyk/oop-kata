@@ -1,10 +1,14 @@
 package com.pszymczyk.roleobject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 class Person {
 
     private final String id;
+    private final List<PersonRole> roles = new ArrayList<>();
 
     public Person(String id) {
         this.id = id;
@@ -12,6 +16,17 @@ class Person {
 
     public String getId() {
         return id;
+    }
+
+    void addRole(PersonRole value) {
+        roles.add(value);
+    }
+
+    <T extends PersonRole> Optional<T> getRole(Class<T> tClass) {
+        return roles.stream()
+                    .filter(role -> role.getClass().isAssignableFrom(tClass))
+                    .map(tClass::cast)
+                    .findFirst();
     }
 
     @Override
