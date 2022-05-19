@@ -7,22 +7,14 @@ import org.springframework.context.event.EventListener;
  */
 class ItemBoughtEventHandler {
 
-    private final SomePartnerRestClient somePartnerRestClient;
-    private final CampaignsRepository campaignsRepository;
+    private ItemBoughtEventHandlerFactory itemBoughtEventHandlerFactory;
 
-    public ItemBoughtEventHandler(SomePartnerRestClient somePartnerRestClient, CampaignsRepository campaignsRepository) {
-        this.somePartnerRestClient = somePartnerRestClient;
-        this.campaignsRepository = campaignsRepository;
+    public ItemBoughtEventHandler(ItemBoughtEventHandlerFactory itemBoughtEventHandlerFactory) {
+        this.itemBoughtEventHandlerFactory = itemBoughtEventHandlerFactory;
     }
 
     @EventListener
     public void handle(ItemBought itemBought) {
-        if (itemBought.getType() == ItemBought.Type.MOBILE) {
-            somePartnerRestClient.send(itemBought);
-        } else {
-            CampaignEntity campaignEntity = campaignsRepository.findById(itemBought.getCampaignId());
-            campaignEntity.updateSellCount(itemBought.getItemId());
-            campaignsRepository.save(campaignEntity);
-        }
+        itemBoughtEventHandlerFactory.create(itemBought.getType()).handle(itemBought);
     }
 }
