@@ -1,7 +1,6 @@
 package com.pszymczyk.roleobject;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 class OrganizationStructureFacade {
@@ -15,21 +14,21 @@ class OrganizationStructureFacade {
     Developer getDeveloper(String personId) {
         Person person = isPartOfOrganization(personId);
 
-        if (!Developer.class.isAssignableFrom(person.getClass())){
+        if (person.getRole(Developer.class).isEmpty()){
             throw new CouldNotFindGivenRole(person.getId(), Developer.class.getSimpleName());
         }
 
-        return (Developer) person;
+        return person.getRole(Developer.class).get();
     }
 
     Administrator getAdministrator(String personId) {
         Person person = isPartOfOrganization(personId);
 
-        if (!Administrator.class.isAssignableFrom(person.getClass())){
+        if (person.getRole(Administrator.class).isEmpty()){
             throw new CouldNotFindGivenRole(person.getId(), Administrator.class.getSimpleName());
         }
 
-        return (Administrator) person;
+        return person.getRole(Administrator.class).get();
     }
 
     private Person isPartOfOrganization(String personId) {

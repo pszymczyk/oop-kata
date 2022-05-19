@@ -83,12 +83,16 @@ public class OrganizationStructureTest {
     }
 
     @Test
-    @Ignore
     public void testDevopsSkills() {
         //given
         String personId = "devops_" + randomInt();
+        Developer d = new Developer();
+        d.addKnownLanguage("go");
+        Administrator a = new Administrator();
+        a.addSupportedSystem("kubernetes");
         Person person = new Person(personId);
-        //TODO
+        person.addRole(d);
+        person.addRole(a);
         facade.addPersonToOrganization(person);
 
         //when
@@ -104,16 +108,20 @@ public class OrganizationStructureTest {
         assertThat(administrator.getSupportedSystems()).containsExactly("kubernetes");
     }
 
-    private Developer getDeveloper(String personId) {
-        Developer developer = new Developer(personId);
+    private Person getDeveloper(String personId) {
+        Person person = new Person(personId);
+        Developer developer = new Developer();
         developer.addKnownLanguage("ruby");
-        return developer;
+        person.addRole(developer);
+        return person;
     }
 
-    private Administrator getAdministrator(String personId) {
-        Administrator administrator = new Administrator(personId);
+    private Person getAdministrator(String personId) {
+        Person person = new Person(personId);
+        Administrator administrator = new Administrator();
         administrator.addSupportedSystem("kubernetes");
-        return administrator;
+        person.addRole(administrator);
+        return person;
     }
 
     private int randomInt() {

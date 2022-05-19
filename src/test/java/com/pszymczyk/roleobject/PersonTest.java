@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PersonTest {
 
-/*
+
     @Test
     public void shouldAddRole() {
         //given
@@ -37,5 +37,5 @@ public class PersonTest {
         Optional<Administrator> administrator = person.getRole(Administrator.class);
         assertThat(administrator).isEmpty();
     }
-*/
+
 }
