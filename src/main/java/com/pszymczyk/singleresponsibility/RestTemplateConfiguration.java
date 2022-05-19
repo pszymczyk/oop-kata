@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author pawel szymczyk
  */
@@ -14,8 +17,8 @@ class RestTemplateConfiguration {
     @Bean
     RestTemplate restTemplate() {
         return new RestTemplateBuilder()
-                .setConnectTimeout(100)
-                .setReadTimeout(500)
+                .setConnectTimeout(Duration.ofSeconds(5))
+                .setReadTimeout(Duration.ofSeconds(1))
                 .build();
     }
 }
