@@ -1,11 +1,11 @@
 package com.pszymczyk.singleresponsibility;
 
-class ItemBoughtEventHandlerFactory {
+class ItemBoughtEventHandlerPolicyFactory {
 
     private final SomePartnerRestClient somePartnerRestClient;
     private final CampaignsRepository campaignsRepository;
 
-    ItemBoughtEventHandlerFactory(SomePartnerRestClient somePartnerRestClient, CampaignsRepository campaignsRepository) {
+    ItemBoughtEventHandlerPolicyFactory(SomePartnerRestClient somePartnerRestClient, CampaignsRepository campaignsRepository) {
         this.somePartnerRestClient = somePartnerRestClient;
         this.campaignsRepository = campaignsRepository;
     }

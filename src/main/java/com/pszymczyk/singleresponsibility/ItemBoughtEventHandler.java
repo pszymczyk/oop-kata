@@ -7,14 +7,14 @@ import org.springframework.context.event.EventListener;
  */
 class ItemBoughtEventHandler {
 
-    private ItemBoughtEventHandlerFactory itemBoughtEventHandlerFactory;
+    private ItemBoughtEventHandlerPolicyFactory itemBoughtEventHandlerPolicyFactory;
 
-    public ItemBoughtEventHandler(ItemBoughtEventHandlerFactory itemBoughtEventHandlerFactory) {
-        this.itemBoughtEventHandlerFactory = itemBoughtEventHandlerFactory;
+    public ItemBoughtEventHandler(ItemBoughtEventHandlerPolicyFactory itemBoughtEventHandlerPolicyFactory) {
+        this.itemBoughtEventHandlerPolicyFactory = itemBoughtEventHandlerPolicyFactory;
     }
 
     @EventListener
     public void handle(ItemBought itemBought) {
-        itemBoughtEventHandlerFactory.create(itemBought.getType()).handle(itemBought);
+        itemBoughtEventHandlerPolicyFactory.create(itemBought.getType()).handle(itemBought);
     }
 }
